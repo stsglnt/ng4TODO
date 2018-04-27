@@ -76,9 +76,6 @@ export class AppComponent implements OnInit, OnDestroy {
   public onDateUpdate(event) {
     this.dateValue = event.value;
   }
-  public selectOneTask(todo, event) {
-    this.checkAsSelected(todo, event);
-  }
   public selectAllTask(event) {
     this.todos.forEach(todo => {
       todo.selected = event.checked;

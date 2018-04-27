@@ -37,7 +37,7 @@ export class TodoService {
   }
   public updateTodo(todo) {
     this.todosFromStorage.forEach((el, index) => {
-      if (todo.task === el.task) {
+      if (todo.id === el.id) {
         el.done = todo.done;
         el.selected = todo.selected;
       }
