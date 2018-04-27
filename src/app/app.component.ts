@@ -35,7 +35,7 @@ export class AppComponent implements OnInit, OnDestroy {
         console.log('Something went wrong', error);
         });
   }
-  public addTodo(task, date) {
+  public addTodo(task, date?) {
     const formatedDate = moment(this.dateValue).format('DD.MM.YYYY');
     const preSend: ITodos = {
       task: task,
