@@ -39,6 +39,6 @@
     </tbody>
   </table>
   <br>
-  <button mat-raised-button color="warn" (click)="deleteSelected()" class="deleteButton">Delete selected</button>
+  <button mat-raised-button color="warn" (click)="deleteSelected()" class="deleteButton" *ngIf="todos.length != 0">Delete selected</button>
   <h4 *ngIf="todos.length === 0">No tasks yet. You can add one using input field above</h4>
 </main>
