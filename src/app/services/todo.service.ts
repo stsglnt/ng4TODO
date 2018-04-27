@@ -53,7 +53,7 @@ export class TodoService {
 
   public deleteTodo(todo: ITodos) {
     this.todosFromStorage.forEach((el, index) => {
-      if (todo.task === el.task) {
+      if (todo.id === el.id) {
         this.todosFromStorage.splice(index, 1);
       }
     });
@@ -64,5 +64,14 @@ export class TodoService {
     this.todosFromStorage = this.todosFromStorage.filter(todo => !todo.selected);
     localStorage.setItem('todos', JSON.stringify(this.todosFromStorage));
     this.todos$.next(this.todosFromStorage);
+  }
+
+  public generateId(length) {
+      let id = '';
+      const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      for (let i = 0; i < length; i++)  {
+        id += possible.charAt(Math.floor(Math.random() * possible.length));
+      }
+      return id;
   }
 }

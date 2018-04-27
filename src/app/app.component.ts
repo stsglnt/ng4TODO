@@ -36,15 +36,18 @@ export class AppComponent implements OnInit, OnDestroy {
         });
   }
   public addTodo(task, date?) {
-    const formatedDate = moment(this.dateValue).format('DD.MM.YYYY');
-    const preSend: ITodos = {
-      task: task,
-      date_time: formatedDate,
-      done: false,
-      selected: false
-    };
-    this.todoService.addTodo(preSend);
-    this.taskValue = '';
+    if (this.taskValue && this.dateValue) {
+      const formatedDate = moment(this.dateValue).format('DD.MM.YYYY');
+      const preSend: ITodos = {
+        task: task,
+        date_time: formatedDate,
+        done: false,
+        selected: false,
+        id: this.todoService.generateId(10)
+      };
+      this.todoService.addTodo(preSend);
+      this.taskValue = '';
+    }
   }
 
   public deleteTodo(todo: ITodos) {
@@ -55,7 +58,8 @@ export class AppComponent implements OnInit, OnDestroy {
       task: todo.task,
       date_time: todo.date_time,
       done: event.checked,
-      selected: todo.selected
+      selected: todo.selected,
+      id: todo.id
     };
     this.todoService.updateTodo(preSend);
   }
@@ -64,7 +68,8 @@ export class AppComponent implements OnInit, OnDestroy {
       task: todo.task,
       date_time: todo.date_time,
       done: todo.done,
-      selected: event.checked
+      selected: event.checked,
+      id: todo.id
     };
     this.todoService.updateTodo(preSend);
   }
