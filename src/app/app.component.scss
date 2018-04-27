@@ -28,6 +28,10 @@
   tr {
     td:first-child {
       width: 10%;
+      padding: 5px;
+    }
+    td:last-child {
+      width: 20%;
     }
   }
 }
@@ -35,4 +39,7 @@
 .hurry-up  {
   background-color: #FFD54F;
   animation: flashing 10s linear infinite;
+}
+.is-done {
+  background-color: lavender;
 }

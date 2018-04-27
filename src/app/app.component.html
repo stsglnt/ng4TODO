@@ -25,13 +25,13 @@
     </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let todo of todos; let i = index">
+      <tr *ngFor="let todo of todos; let i = index" [class.is-done]="todo.done">
         <td>
           <mat-checkbox [checked]="todo.selected" (change)="selectOneTask(todo, $event)"></mat-checkbox>
         </td>
-        <td>{{todo.task}}</td>
+        <td style="width: 40%;">{{todo.task}}</td>
         <td>{{todo.date_time}}</td>
-        <td style="width: 20%">
+        <td >
           <mat-checkbox [checked]="todo.done" (change)="checkAsDone(todo, $event)">Done</mat-checkbox>
           <button mat-raised-button color="warn" (click)="deleteTodo(todo)" class="deleteButton" >Delete</button>
         </td>
