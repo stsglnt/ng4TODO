@@ -1,0 +1,38 @@
+.input-flex-container {
+  display: flex;
+}
+.main-content {
+  width: 800px;
+  margin: 20px auto 0 auto;
+}
+.task-input {
+  width: 60%;
+}
+.button-custom {
+  float: right;
+  margin-top: 10px;
+}
+
+.main-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 16px;
+  background-color: #fff;
+  thead tr {
+    color: rgba(0,0,0,.54);
+  }
+  tr {
+    border-bottom: 1px solid rgba(0,0,0,.12);
+    height: 48px;
+  }
+  tr {
+    td:first-child {
+      width: 10%;
+    }
+  }
+}
+
+.hurry-up  {
+  background-color: #FFD54F;
+  animation: flashing 10s linear infinite;
+}

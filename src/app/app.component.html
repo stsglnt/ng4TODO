@@ -1,0 +1,44 @@
+<mat-toolbar color="primary">
+  <span>TODO App</span>
+</mat-toolbar>
+
+<main class="main-content">
+  <mat-form-field class="task-input">
+    <input type="text" matInput (keyup.enter)="addTodo(taskValue)" [(ngModel)]="taskValue"  placeholder="New task">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [matDatepicker]="dp3" placeholder="" disabled (dateInput)="onDateUpdate($event)">
+    <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+    <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+  </mat-form-field>
+  <button class="button-custom" mat-raised-button (click)="addTodo(taskValue, dateValue)" [disabled]="!taskValue || !dateValue">Save</button>
+
+  <table class="main-table" *ngIf="todos.length > 0">
+    <thead>
+    <tr>
+      <td>
+        <mat-checkbox [checked]="selectedAll" (change)="selectAllTask($event)"></mat-checkbox> Select
+      </td>
+      <td>Task</td>
+      <td>Date</td>
+      <td>Actions</td>
+    </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let todo of todos; let i = index">
+        <td>
+          <mat-checkbox [checked]="todo.selected" (change)="selectOneTask(todo, $event)"></mat-checkbox>
+        </td>
+        <td>{{todo.task}}</td>
+        <td>{{todo.date_time}}</td>
+        <td style="width: 20%">
+          <mat-checkbox [checked]="todo.done" (change)="checkAsDone(todo, $event)">Done</mat-checkbox>
+          <button mat-raised-button color="warn" (click)="deleteTodo(todo)" class="deleteButton" >Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <br>
+  <button mat-raised-button color="warn" (click)="deleteSelected()" class="deleteButton">Delete selected</button>
+  <h4 *ngIf="todos.length === 0">No tasks yet. You can add one using input field above</h4>
+</main>
