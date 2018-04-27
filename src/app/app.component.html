@@ -17,7 +17,8 @@
     <thead>
     <tr>
       <td>
-        <mat-checkbox [checked]="selectedAll" (change)="selectAllTask($event)"></mat-checkbox> Select
+        <mat-checkbox  [(ngModel)]="selectedAll" (change)="selectAllTask($event)"></mat-checkbox> Select
+        <!--<input type="checkbox" [(ngModel)]="selectedAll" (change)="selectAllTask($event)"> Select-->
       </td>
       <td>Task</td>
       <td>Date</td>

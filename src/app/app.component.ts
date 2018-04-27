@@ -78,9 +78,9 @@ export class AppComponent implements OnInit, OnDestroy {
   }
   public selectAllTask(event) {
     this.todos.forEach(todo => {
-      todo.selected = event.checked;
+      todo.selected = this.selectedAll;
     });
-    this.todoService.updateAllTodo(event.checked);
+    this.todoService.updateAllTodo(this.selectedAll);
   }
   public deleteSelected() {
     this.todoService.deleteAllSelectedTodo();

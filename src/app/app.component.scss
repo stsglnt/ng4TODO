@@ -26,6 +26,10 @@
     height: 48px;
   }
   tr {
+    td {
+      word-break: break-all;
+      padding: 5px;
+    }
     td:first-child {
       width: 10%;
       padding: 5px;
