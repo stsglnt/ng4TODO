@@ -72,6 +72,7 @@ export class AppComponent implements OnInit, OnDestroy {
       id: todo.id
     };
     this.todoService.updateTodo(preSend);
+     this.selectedAll = this.checkIfAllSelected(this.todos);
   }
   public onDateUpdate(event) {
     this.dateValue = event.value;
@@ -85,6 +86,9 @@ export class AppComponent implements OnInit, OnDestroy {
   public deleteSelected() {
     this.todoService.deleteAllSelectedTodo();
     this.selectedAll = false;
+  }
+  public checkIfAllSelected(todos) {
+    return todos.every((todo) => todo.selected);
   }
 }
 
